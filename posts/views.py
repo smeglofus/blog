@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Post, Category, Author
+from django.db.models import Q
 
 # Create your views here.
 
@@ -20,6 +21,8 @@ def post(request,slug):
         'post': post,
     }
     return render(request, 'post.html', context)
+def about (request):
+    return render(request, 'about_page.html')
 
 def category_post_list(request, slug):
     category = Category.objects.get(slug= slug)
@@ -35,3 +38,16 @@ def allposts(request):
         'posts': posts,
     }
     return render(request, 'all_posts.html', context)
+
+def search(request):
+    queryset = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(title__icontains=query) |
+            Q(overview__icontains=query)
+        ).distinct()
+    context = {
+        'queryset': queryset
+    }
+    return render(request, 'search_bar.html', context)

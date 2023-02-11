@@ -34,3 +34,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+"""dodělat templates a pak jít dál. hotovo.
+teď jsi v prepare pillow sekci. už je nainstalovanej, tak musíš pokračovat dál.
+"""
+
+"""https://justdjango.com/blog/build-a-blog-with-django"""
+

@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from posts.views import homepage, post, category_post_list, allposts
+from posts.views import homepage, post, category_post_list, allposts, search, about
 """blogpost URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -23,5 +23,7 @@ urlpatterns = [
     path('', homepage, name = 'homepage'),
     path('post/<slug>/', post, name = 'post'),
     path('postlist/<slug>/', category_post_list, name = 'postlist'),
+    path('about/', about,name = 'about' ),
     path('posts/', allposts, name = 'allposts'),
+    path('search/', search, name = 'search'),
 ]
